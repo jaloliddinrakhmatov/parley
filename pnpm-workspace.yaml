@@ -1,0 +1,33 @@
+packages:
+  - apps/*
+  - packages/*
+
+# Exact pins shared by every package. effect and @effect/* must stay on the same
+# version (see docs/DECISIONS.md D-001); typescript is pinned below 6.1 (D-002).
+catalog:
+  # Effect
+  effect: 4.0.5
+  "@effect/platform-node": 4.0.5
+  "@effect/vitest": 4.0.5
+  # Language + tests
+  typescript: 6.0.3
+  vitest: 5.0.5
+  "@types/node": 26.6.5
+  # Lint + format
+  eslint: 10.12.0
+  "@eslint/js": 10.0.1
+  typescript-eslint: 8.71.2
+  eslint-config-prettier: 10.1.8
+  eslint-plugin-react-hooks: 7.1.1
+  globals: 17.13.0
+  prettier: 3.9.10
+  concurrently: 10.0.6
+  # Web
+  react: 19.3.1
+  react-dom: 19.3.1
+  "@types/react": 19.3.0
+  "@types/react-dom": 19.3.0
+  vite: 8.3.4
+  "@vitejs/plugin-react": 6.1.2
+  "@tanstack/react-router": 1.170.44
+  "@tanstack/react-query": 5.104.3

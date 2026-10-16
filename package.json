@@ -1,0 +1,28 @@
+{
+  "name": "parley",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@12.14.0",
+  "engines": {
+    "node": ">=24.12.0"
+  },
+  "scripts": {
+    "dev": "concurrently --names api,agent,web --prefix-colors blue,magenta,green \"pnpm --filter @parley/api dev\" \"pnpm --filter @parley/agent dev\" \"pnpm --filter @parley/web dev\"",
+    "typecheck": "tsc --noEmit -p . && pnpm -r typecheck",
+    "test": "pnpm -r test",
+    "lint": "eslint . && prettier --check . && node scripts/check-banned-deps.ts",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@eslint/js": "catalog:",
+    "@types/node": "catalog:",
+    "concurrently": "catalog:",
+    "eslint": "catalog:",
+    "eslint-config-prettier": "catalog:",
+    "eslint-plugin-react-hooks": "catalog:",
+    "globals": "catalog:",
+    "prettier": "catalog:",
+    "typescript": "catalog:",
+    "typescript-eslint": "catalog:"
+  }
+}

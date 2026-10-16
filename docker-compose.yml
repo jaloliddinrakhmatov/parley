@@ -1,0 +1,30 @@
+name: parley
+
+services:
+  postgres:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_USER: parley
+      POSTGRES_PASSWORD: parley
+      POSTGRES_DB: parley
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U parley -d parley"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  livekit:
+    image: livekit/livekit-server:v1.13.10
+    # --dev: API key "devkey", secret "secret"; single UDP port for media.
+    command: ["--dev", "--bind", "0.0.0.0"]
+    ports:
+      - "7880:7880" # HTTP + WebSocket signalling
+      - "7881:7881" # WebRTC over TCP
+      - "7882:7882/udp" # WebRTC over UDP
+
+volumes:
+  postgres-data:
